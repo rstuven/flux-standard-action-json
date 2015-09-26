@@ -1,6 +1,6 @@
 {
   "name": "flux-standard-action-json",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Flux standard action JSON serialization",
   "main": "lib/index.js",
   "scripts": {

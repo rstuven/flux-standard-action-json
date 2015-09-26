@@ -1,6 +1,9 @@
 Flux Standard Action JSON serialization
 =======================================
 
+[![build status](https://img.shields.io/travis/rstuven/flux-standard-action-json/master.svg?style=flat-square)](https://travis-ci.org/rstuven/flux-standard-action-json)
+[![npm version](https://img.shields.io/npm/v/flux-standard-action-json.svg?style=flat-square)](https://www.npmjs.com/package/flux-standard-action-json)
+
 [Flux Standard Action](https://github.com/acdlite/flux-standard-action) JSON serialization utilities.
 
 ```

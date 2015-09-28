@@ -10,13 +10,13 @@ Flux Standard Action JSON serialization
 npm install --save flux-standard-action-json
 ```
 
-Recommended import:
+## Usage
 
-```
+```js
 import fsaJSON from 'flux-standard-action-json';
 ```
 
-### `fsaJSON.stringify(action, ?options)`
+### `stringify(action, ?options)`
 
 Returns a JSON string if `action` is FSA compliant. Otherwise, throws an error.
 
@@ -46,7 +46,7 @@ Example:
   // returns '{"type":"ACTION_TYPE","error":true,"payload":{"name":"Error","message":"Where?","stack":"<a full error stack>"}}'
 ```
 
-### `fsaJSON.parse(json, ?options)`
+### `parse(json, ?options)`
 
 Returns an FSA compliant action parsed from a JSON string,
 parsing `Symbol` type and `Error` payload where applies.

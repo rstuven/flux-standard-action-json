@@ -10,7 +10,7 @@ Flux Standard Action JSON serialization
 npm install --save flux-standard-action-json
 ```
 
-### `fsaToJSON(action)`
+### `fsaToJSON(action, ?options)`
 
 Returns a JSON string if `action` is FSA compliant. Otherwise, throws an error.
 
@@ -26,7 +26,18 @@ Returns a JSON string if `action` is FSA compliant. Otherwise, throws an error.
   // returns '{"type":"Symbol(ACTION_TYPE)"}'
 ```
 
-### `fsaFromJSON(json)`
+#### ?options
+
+* `error`: (Object) Error serialization options. Applies only if `payload` is an `Error` object. We depend on [Errio so the same options apply](https://github.com/programble/errio#options).
+
+Example:
+```js
+  fsaToJSON({type: 'ACTION_TYPE', error: true, new Error('Where?'))}, {error: {stack: true}});
+  // returns '{"type":"ACTION_TYPE","error":true,"payload":{"name":"Error","message":"Where?","stack":"<a full error stack>"}}'
+```
+
+
+### `fsaFromJSON(json, ?options)`
 
 Returns an FSA compliant action parsed from a JSON string,
 parsing `Symbol` type and `Error` payload where applies.
@@ -54,3 +65,7 @@ Examples:
   fsaFromJSON('{"type":"Symbol()"}');
   // throws an error
 ```
+
+#### ?options
+
+* `error`: (Object) Error deserialization options. Applies only if `payload` is an `Error` object. We depend on [Errio so the same options apply](https://github.com/programble/errio#options).

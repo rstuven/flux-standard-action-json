@@ -24,12 +24,17 @@ describe('fsaFromJSON()', () => {
   });
 
   it('parses Error', () => {
-    const json = `{"type":"${type}","error":true,"payload":"You are wrong!"}`;
+    const json = `{"type":"${type}","error":true,"payload":{"name":"Error","message":"You are wrong!","stack":"here\\nand here"}}`;
     const parsed = fsaFromJSON(json);
+    expect(parsed.payload).instanceof(Error);
     expect(parsed).to.deep.equal({
       type,
       error: true,
-      payload: new Error('You are wrong!')
+      payload: {
+        name: 'Error',
+        message: 'You are wrong!',
+        stack: 'here\nand here'
+      }
     });
   });
 

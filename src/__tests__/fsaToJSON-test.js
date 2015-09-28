@@ -31,7 +31,17 @@ describe('fsaToJSON()', () => {
       payload: new Error('You are wrong!')
     };
     const json = fsaToJSON(action);
-    expect(json).to.equal(`{"type":"${type}","error":true,"payload":"You are wrong!"}`);
+    expect(json).to.equal(`{"type":"${type}","error":true,"payload":{"name":"Error","message":"You are wrong!"}}`);
+  });
+
+  it('stringifies Error with stack', () => {
+    const action = {
+      type,
+      error: true,
+      payload: new Error('You are wrong!')
+    };
+    const json = fsaToJSON(action, { error: { stack: true } });
+    expect(json).to.contain('"stack":');
   });
 
 });

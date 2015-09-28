@@ -44,3 +44,5 @@ export function parse(json, options = {}) {
   }
   return action;
 }
+
+export default {stringify, parse};

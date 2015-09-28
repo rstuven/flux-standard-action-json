@@ -1,17 +1,17 @@
-import { fsaToJSON } from '../';
+import { stringify } from '../';
 
 const type = 'ACTION_TYPE';
 
-describe('fsaToJSON()', () => {
+describe('stringify()', () => {
 
   it('throws error if action is not FSA', () => {
     const action = {};
-    expect(() => fsaToJSON(action)).to.throw('Argument is not a Flux Standard Action');
+    expect(() => stringify(action)).to.throw('Argument is not a Flux Standard Action');
   });
 
   it('throws error if action type is a Symbol without key', () => {
     const action = {type: Symbol()};
-    expect(() => fsaToJSON(action)).to.throw('Action type is a Symbol without key');
+    expect(() => stringify(action)).to.throw('Action type is a Symbol without key');
   });
 
   it('stringifies Symbol', () => {
@@ -20,7 +20,7 @@ describe('fsaToJSON()', () => {
       type: Symbol(type),
       payload: foobar
     };
-    const json = fsaToJSON(action);
+    const json = stringify(action);
     expect(json).to.equal(`{"type":"Symbol(${type})","payload":{"foo":"bar"}}`);
   });
 
@@ -30,7 +30,7 @@ describe('fsaToJSON()', () => {
       error: true,
       payload: new Error('You are wrong!')
     };
-    const json = fsaToJSON(action);
+    const json = stringify(action);
     expect(json).to.equal(`{"type":"${type}","error":true,"payload":{"name":"Error","message":"You are wrong!"}}`);
   });
 
@@ -40,7 +40,7 @@ describe('fsaToJSON()', () => {
       error: true,
       payload: new Error('You are wrong!')
     };
-    const json = fsaToJSON(action, { error: { stack: true } });
+    const json = stringify(action, { error: { stack: true } });
     expect(json).to.contain('"stack":');
   });
 

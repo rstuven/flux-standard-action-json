@@ -4,7 +4,7 @@ import Errio from 'errio';
 const ARGUMENT_NOT_FSA_ERROR = 'Argument is not a Flux Standard Action';
 const SYMBOL_WITHOUT_KEY_ERROR = 'Action type is a Symbol without key';
 
-export function fsaToJSON(action, options = {}) {
+export function stringify(action, options = {}) {
   if (!isFSA(action)) {
     throw new Error(ARGUMENT_NOT_FSA_ERROR);
   }
@@ -23,7 +23,7 @@ export function fsaToJSON(action, options = {}) {
 
 const PARSE_SYMBOL_REGEX = /^Symbol\(([^)]*)\)$/;
 
-export function fsaFromJSON(json, options = {}) {
+export function parse(json, options = {}) {
   const action = JSON.parse(json);
   if (!isFSA(action)) {
     throw new Error(ARGUMENT_NOT_FSA_ERROR);

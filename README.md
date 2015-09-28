@@ -10,19 +10,25 @@ Flux Standard Action JSON serialization
 npm install --save flux-standard-action-json
 ```
 
-### `fsaToJSON(action, ?options)`
+Recommended import:
+
+```
+import fsaJSON from 'flux-standard-action-json';
+```
+
+### `fsaJSON.stringify(action, ?options)`
 
 Returns a JSON string if `action` is FSA compliant. Otherwise, throws an error.
 
 **NOTE:** `Symbol` action types should have a [key](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/keyFor). For example:
 
 ```js
-  fsaToJSON({type: Symbol()});
+  fsaJSON.stringify({type: Symbol()});
   // throws an error
 ```
 
 ```js
-  fsaToJSON({type: Symbol('ACTION_TYPE')});
+  fsaJSON.stringify({type: Symbol('ACTION_TYPE')});
   // returns '{"type":"Symbol(ACTION_TYPE)"}'
 ```
 
@@ -32,12 +38,15 @@ Returns a JSON string if `action` is FSA compliant. Otherwise, throws an error.
 
 Example:
 ```js
-  fsaToJSON({type: 'ACTION_TYPE', error: true, new Error('Where?'))}, {error: {stack: true}});
+  fsaJSON.stringify({
+    type: 'ACTION_TYPE',
+    error: true,
+    new Error('Where?'))
+  }, {error: {stack: true}});
   // returns '{"type":"ACTION_TYPE","error":true,"payload":{"name":"Error","message":"Where?","stack":"<a full error stack>"}}'
 ```
 
-
-### `fsaFromJSON(json, ?options)`
+### `fsaJSON.parse(json, ?options)`
 
 Returns an FSA compliant action parsed from a JSON string,
 parsing `Symbol` type and `Error` payload where applies.
@@ -45,24 +54,24 @@ parsing `Symbol` type and `Error` payload where applies.
 Examples:
 
 ```js
-  fsaFromJSON('{}');
+  fsaJSON.parse('{}');
   // throws an error
 ```
 
 ```js
-  fsaFromJSON('{"type":"Symbol(ACTION_TYPE)"}');
+  fsaJSON.parse('{"type":"Symbol(ACTION_TYPE)"}');
   // returns {type: Symbol.for('ACTION_TYPE')}
 ```
 
 ```js
-  fsaFromJSON('{"type":"TYPE","error":true,"payload":"Invalid something"}');
+  fsaJSON.parse('{"type":"TYPE","error":true,"payload":"Invalid something"}');
   // returns {type: 'TYPE', error: true, payload: new Error('Invalid something')}
 ```
 
 **NOTE:** `Symbol` action types should have a [key](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/keyFor). For example:
 
 ```js
-  fsaFromJSON('{"type":"Symbol()"}');
+  fsaJSON.parse('{"type":"Symbol()"}');
   // throws an error
 ```
 

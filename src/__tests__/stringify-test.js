@@ -18,7 +18,7 @@ describe('stringify()', () => {
     const foobar = { foo: 'bar' };
     const action = {
       type: Symbol(type),
-      payload: foobar
+      payload: foobar,
     };
     const json = stringify(action);
     expect(json).to.equal(`{"type":"Symbol(${type})","payload":{"foo":"bar"}}`);
@@ -28,7 +28,7 @@ describe('stringify()', () => {
     const action = {
       type,
       error: true,
-      payload: new Error('You are wrong!')
+      payload: new Error('You are wrong!'),
     };
     const json = stringify(action);
     expect(json).to.equal(`{"type":"${type}","error":true,"payload":{"name":"Error","message":"You are wrong!"}}`);
@@ -38,7 +38,7 @@ describe('stringify()', () => {
     const action = {
       type,
       error: true,
-      payload: new Error('You are wrong!')
+      payload: new Error('You are wrong!'),
     };
     const json = stringify(action, { error: { stack: true } });
     expect(json).to.contain('"stack":');

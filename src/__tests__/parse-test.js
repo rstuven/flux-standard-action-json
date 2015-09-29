@@ -14,7 +14,7 @@ describe('parse()', () => {
     const parsed = parse(json);
     expect(typeof parsed.type).to.equal('symbol');
     expect(parsed).to.deep.equal({
-      type: Symbol.for(type)
+      type: Symbol.for(type),
     });
   });
 
@@ -33,8 +33,8 @@ describe('parse()', () => {
       payload: {
         name: 'Error',
         message: 'You are wrong!',
-        stack: 'here\nand here'
-      }
+        stack: 'here\nand here',
+      },
     });
   });
 

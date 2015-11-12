@@ -19,7 +19,7 @@
   "author": "Ricardo Stuven <rstuven@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel": "5.8.29",
+    "babel": "6.1.4",
     "babel-core": "6.0.14",
     "babel-eslint": "4.1.4",
     "chai": "3.4.0",

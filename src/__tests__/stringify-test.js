@@ -10,7 +10,7 @@ describe('stringify()', () => {
   });
 
   it('throws error if action type is a Symbol without key', () => {
-    const action = {type: Symbol()};
+    const action = { type: Symbol() };
     expect(() => stringify(action)).to.throw('Action type is a Symbol without key');
   });
 

@@ -30,7 +30,14 @@
     "mocha": "2.3.4"
   },
   "dependencies": {
+    "babel-cli": "6.3.17",
+    "babel-core": "6.3.26",
+    "babel-eslint": "5.0.0-beta6",
+    "chai": "3.4.1",
     "errio": "1.2.1",
-    "flux-standard-action": "0.6.0"
+    "eslint": "1.10.3",
+    "eslint-config-airbnb": "2.1.1",
+    "flux-standard-action": "0.6.0",
+    "mocha": "2.3.4"
   }
 }

@@ -30,7 +30,7 @@
     "mocha": "2.4.4"
   },
   "dependencies": {
-    "errio": "1.2.1",
+    "errio": "1.2.2",
     "flux-standard-action": "0.6.0"
   }
 }
